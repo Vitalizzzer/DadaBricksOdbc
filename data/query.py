@@ -1,0 +1,5 @@
+SELECT_TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name='{}'"
+CREATE_TABLE_QUERY = "CREATE TABLE {} (first text, last text)"
+INSERT_DATA_QUERY = "INSERT INTO {} VALUES (:first, :last)"
+SELECT_ALL_QUERY = "SELECT * FROM {}"
+DROP_TABLE = "DROP TABLE {}"
