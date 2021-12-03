@@ -10,5 +10,8 @@ export RP_PROJECT=<PROJECT_NAME>
 ### Execution
 Run in terminal:
 ```bash 
-behave -D rp_enable=True -D step_based=True --tags=ODBC 
+behave -f html -o report/cucumber_report.html -D rp_enable=True -D step_based=True --tags=ODBC
 ```
+
+### Reporting
+Execution results are in report/cucumber_report.html

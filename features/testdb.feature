@@ -1,11 +1,13 @@
 @ODBC
 #noinspection CucumberUndefinedStep,CucumberPlusUndefinedStep
-Feature: Verify data in database
+Feature: Database CRUD commands and data verification
   CRUD commands are executed and results are verified
+
+  Background:
+    Given table name "employee"
 
   @1
   Scenario Outline: Insert and verify data
-    Given table name "employee"
     When insert first name <FirstName> and last name <LastName>
     Then correct data with <FirstName> and <LastName> appears in the database
 
@@ -15,7 +17,6 @@ Feature: Verify data in database
 
   @2
   Scenario Outline: Update and verify data
-    Given table name "employee"
     When insert first name <FirstName> and last name <LastName>
     Then correct data with <FirstName> and <LastName> appears in the database
     When update data with <NewFirstName> and <NewLastName> where first name = <FirstName>
@@ -27,7 +28,6 @@ Feature: Verify data in database
 
   @3
   Scenario Outline: Delete and verify data
-    Given table name "employee"
     When insert first name <FirstName> and last name <LastName>
     Then correct data with <FirstName> and <LastName> appears in the database
     When delete data where first name = <FirstName> and last name = <LastName>
