@@ -22,14 +22,14 @@ def before_all(context):
     context.requested_browser = context.config.userdata.get('browser', "chrome")
     rp_endpoint = os.environ.get("RP_ENDPOINT")
     rp_project = os.environ.get("RP_PROJECT")
-    rp_token = os.environ.get("RP_TOKEN")
-    add_screenshot = context.config.userdata.getbool('add_screenshot', False)
-    launch_name = f"Execution using tags: {tags}"
+    rp_uuid = os.environ.get("RP_UUID")
+    rp_launch = os.environ.get("RP_LAUNCH")
     launch_description = f"BDD Tests for: {tags}"
+    add_screenshot = context.config.userdata.getbool('add_screenshot', False)
     context.behave_integration_service = BehaveIntegrationService(rp_endpoint=rp_endpoint,
                                                                   rp_project=rp_project,
-                                                                  rp_token=rp_token,
-                                                                  rp_launch_name=launch_name,
+                                                                  rp_token=rp_uuid,
+                                                                  rp_launch_name=rp_launch,
                                                                   rp_launch_description=launch_description,
                                                                   rp_enable=rp_enable,
                                                                   step_based=step_based,
