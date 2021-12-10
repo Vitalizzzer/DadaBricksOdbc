@@ -1,7 +1,7 @@
 import sqlite3
 
 import data.query as query
-from loguru import logger
+import logging
 
 
 def open_connection():
@@ -54,5 +54,5 @@ def select_specific(connection, table_name, value1, value2):
     c = connection.cursor()
     c.execute(query.SELECT_SPECIFIC_QUERY.format(table_name, value1, value2))
     result = c.fetchall()
-    logger.info(f'Query result size: {len(result)}\n')
+    logging.info(f'Query result size: {len(result)}\n')
     return result

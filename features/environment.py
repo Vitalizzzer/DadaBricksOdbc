@@ -2,7 +2,6 @@ import os
 
 import logging
 
-from loguru import logger
 from reportportal_behave.behave_integration_service import BehaveIntegrationService
 
 from repository.pyodbc_sqlite import open_connection
@@ -12,7 +11,6 @@ def before_all(context):
     if not context.config.log_capture:
         logging.basicConfig(level=logging.DEBUG)
 
-    #urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     context.config.setup_logging()
 
     tags = ', '.join([tag for tags in context.config.tags.ands for tag in tags])
@@ -43,7 +41,7 @@ def before_feature(context, feature):
 
 def before_scenario(context, scenario):
     context.connection = open_connection()
-    logger.info("Connection is opened")
+    logging.info("Connection is opened")
 
     context.scenario_id = context.behave_integration_service.before_scenario(scenario,
                                                                              feature_id=context.feature_id)
@@ -59,7 +57,7 @@ def after_step(context, step):
 
 def after_scenario(context, scenario):
     context.connection.close()
-    logger.info("Connection is closed")
+    logging.info("Connection is closed")
     context.behave_integration_service.after_scenario(scenario, context.scenario_id)
 
 
