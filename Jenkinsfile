@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install behave && behave -f html -o report/cucumber_report.html -D rp_enable=True -D step_based=True --tags=ODBC'
+                sh 'virtualenv venv && . venv/bin/activate && pip install behave && pip install behave2cucumber && python3 -m pip install behave-html-formatter  && behave -f html -o report/cucumber_report.html -D rp_enable=True -D step_based=True --tags=ODBC'
                 
             }
         }
