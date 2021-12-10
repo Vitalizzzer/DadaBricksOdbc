@@ -11,7 +11,7 @@ pipeline {
                 sh 'pip3 install behave'
                 sh 'pip3 install behave2cucumber'
                 sh 'pip3 install behave-html-formatter'
-                sh 'behave -D rp_enable=True -D step_based=True --tags=ODBC''
+                sh 'behave -D rp_enable=True -D step_based=True --tags=ODBC'
                 
             }
         }
