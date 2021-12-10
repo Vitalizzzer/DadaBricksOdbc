@@ -8,9 +8,7 @@ from repository.pyodbc_sqlite import open_connection
 
 
 def before_all(context):
-    if not context.config.log_capture:
-        logging.basicConfig(level=logging.DEBUG)
-
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
     context.config.setup_logging()
 
     tags = ', '.join([tag for tags in context.config.tags.ands for tag in tags])

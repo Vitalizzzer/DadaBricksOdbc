@@ -3,6 +3,8 @@ import sqlite3
 import data.query as query
 import logging
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
+
 
 def open_connection():
     return sqlite3.connect('resources/testdb.db')
