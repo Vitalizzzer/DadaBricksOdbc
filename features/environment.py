@@ -1,6 +1,5 @@
 import os
 
-import urllib3
 import logging
 
 from loguru import logger
@@ -13,7 +12,7 @@ def before_all(context):
     if not context.config.log_capture:
         logging.basicConfig(level=logging.DEBUG)
 
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    #urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     context.config.setup_logging()
 
     tags = ', '.join([tag for tags in context.config.tags.ands for tag in tags])
