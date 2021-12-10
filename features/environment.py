@@ -24,7 +24,7 @@ def before_all(context):
     rp_project = os.environ.get("RP_PROJECT")
     rp_uuid = os.environ.get("RP_UUID")
     rp_launch = os.environ.get("RP_LAUNCH")
-    launch_description = f"BDD Tests"
+    launch_description = "BDD Tests"
     add_screenshot = context.config.userdata.getbool('add_screenshot', False)
     context.behave_integration_service = BehaveIntegrationService(rp_endpoint=rp_endpoint,
                                                                   rp_project=rp_project,
