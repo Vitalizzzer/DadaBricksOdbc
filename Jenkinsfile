@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'virtualenv venv && . venv/bin/activate'
+                //sh 'virtualenv venv && . venv/bin/activate'
                 sh 'apt-get update'                
                 sh 'apt-get -y install python3-pip'
                 sh 'pip3 install behave'
