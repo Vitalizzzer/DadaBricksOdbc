@@ -1,7 +1,5 @@
 from behave import *
 import repository.pyodbc_sqlite as bl
-from loguru import logger
-import logging
 
 
 @given('table name "{table_name}"')
