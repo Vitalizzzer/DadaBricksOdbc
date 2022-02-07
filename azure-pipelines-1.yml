@@ -15,11 +15,11 @@ steps:
     versionSpec: '3.6'
   displayName: 'Use Python 3.6'
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install behave
-  displayName: 'Install dependencies'
+# - script: |
+#     python -m pip install --upgrade pip
+#     pip install behave
+#   displayName: 'Install dependencies'
 
-- script: |
-    behave -f html -o report/cucumber_report.html -D step_based=True --tags=ODBC
-  displayName: 'pytest'
+# - script: |
+#     behave -f html -o report/cucumber_report.html -D step_based=True --tags=ODBC
+#   displayName: 'behave'
