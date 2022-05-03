@@ -37,4 +37,6 @@ behave -f json.pretty -o report/cucumber_report.json -D rp_enable=False -D step_
 ## Reporting
 Execution results are in ***report/cucumber_report.html*** or ***report/cucumber_report.json***
 
-## TODO: Implement REST requests to inject and delete test data files in Azure Databricks 
+## TODO: 
+1. Implement REST requests to inject and delete test data files in Azure Databricks 
+2. Implement trigger scripts execution in Azure Databricks and extract report.
