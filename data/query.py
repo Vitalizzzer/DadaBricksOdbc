@@ -1,8 +1,0 @@
-SELECT_TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name='{}'"
-CREATE_TABLE_QUERY = "CREATE TABLE {} (first text, last text)"
-INSERT_QUERY = "INSERT INTO {} VALUES (:first, :last)"
-UPDATE_QUERY = "UPDATE {} SET first = '{}', last = '{}' WHERE first = '{}'"
-DELETE_QUERY = "DELETE FROM {} WHERE first = '{}' and last = '{}'"
-SELECT_ALL_QUERY = "SELECT * FROM {}"
-SELECT_SPECIFIC_QUERY = "SELECT * FROM {} WHERE first = '{}' and last = '{}'"
-DROP_TABLE = "DROP TABLE {}"

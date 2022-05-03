@@ -1,26 +1,28 @@
 import os
-
 import logging
-
 from reportportal_behave.behave_integration_service import BehaveIntegrationService
-
-from repository.pyodbc_sqlite import open_connection
+from repository.pyodbc_databricks_cluster import open_connection
 
 
 def before_all(context):
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s :: %(levelname)s :: %(message)s')
+    logging.getLogger('databricks.sql').setLevel(logging.DEBUG)
     context.config.setup_logging()
-
     tags = ', '.join([tag for tags in context.config.tags.ands for tag in tags])
-    rp_enable = context.config.userdata.getbool('rp_enable', False)
     step_based = context.config.userdata.getbool('step_based', True)
     context.requested_browser = context.config.userdata.get('browser', "chrome")
+
+    context.server_hostname = os.environ.get("SERVER_HOSTNAME")
+    context.http_path = os.environ.get("HTTP_PATH")
+    context.access_token = os.environ.get("ACCESS_TOKEN")
+
+    rp_enable = context.config.userdata.getbool('rp_enable', False)
     rp_endpoint = os.environ.get("RP_ENDPOINT")
     rp_project = os.environ.get("RP_PROJECT")
     rp_uuid = os.environ.get("RP_UUID")
     rp_launch = os.environ.get("RP_LAUNCH")
     launch_description = "BDD Tests"
     add_screenshot = context.config.userdata.getbool('add_screenshot', False)
+
     context.behave_integration_service = BehaveIntegrationService(rp_endpoint=rp_endpoint,
                                                                   rp_project=rp_project,
                                                                   rp_token=rp_uuid,
@@ -38,7 +40,7 @@ def before_feature(context, feature):
 
 
 def before_scenario(context, scenario):
-    context.connection = open_connection()
+    context.connection = open_connection(context)
     logging.info("Connection is opened")
 
     context.scenario_id = context.behave_integration_service.before_scenario(scenario,
